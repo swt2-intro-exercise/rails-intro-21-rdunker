@@ -60,6 +60,12 @@ class PapersController < ApplicationController
     return false unless paper.update(title: paper_params[:title],
                   venue: paper_params[:venue],
                   year: paper_params[:year])
-    paper.author_ids.concat(paper_params[:author_ids])
+    if paper_params[:author_ids].present?
+      paper_params[:author_ids].each do |author_id|
+        author = Author.find_by(id: author_id)
+        paper.authors << author
+      end
+    end
+    paper.save
   end
 end
