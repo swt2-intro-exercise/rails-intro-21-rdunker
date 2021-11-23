@@ -22,5 +22,10 @@ RSpec.describe Paper, type: :model do
       paper = Paper.new(title: 'Electric vehicle Charging', venue: nil, year: 2016)
       expect(paper).not_to be_valid
     end
+
+    it 'should have an integer year' do
+      paper = Paper.new(title: 'Electric vehicle Charging', venue: 'venue', year: '2a016')
+      expect(paper).not_to be_valid
+    end
   end
 end
