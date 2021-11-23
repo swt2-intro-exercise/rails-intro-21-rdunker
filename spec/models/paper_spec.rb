@@ -12,5 +12,15 @@ RSpec.describe Paper, type: :model do
       paper = Paper.new(title: 'Electric vehicle Charging', venue: 'venue', year: nil)
       expect(paper).not_to be_valid
     end
+
+    it 'should have a title' do
+      paper = Paper.new(title: nil, venue: 'venue', year: 2016)
+      expect(paper).not_to be_valid
+    end
+
+    it 'should have a venue' do
+      paper = Paper.new(title: 'Electric vehicle Charging', venue: nil, year: 2016)
+      expect(paper).not_to be_valid
+    end
   end
 end
