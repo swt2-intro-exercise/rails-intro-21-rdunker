@@ -31,7 +31,7 @@ describe "Edit paper page", type: :feature do
                                              year: 1999)
   end
 
-  
+
 end
 
 

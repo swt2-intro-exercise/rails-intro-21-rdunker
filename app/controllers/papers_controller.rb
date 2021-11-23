@@ -32,7 +32,7 @@ class PapersController < ApplicationController
 
   # PATCH/PUT /papers/1
   def update
-    if @paper.update(paper_params)
+    if update_paper(paper_params, @paper)
       redirect_to @paper, notice: 'Paper was successfully updated.'
     else
       render :edit
@@ -55,4 +55,11 @@ class PapersController < ApplicationController
     def paper_params
       params.require(:paper).permit(:title, :venue, :year, :author_ids)
     end
+
+  def update_paper(paper_params, paper)
+    return false unless paper.update(title: paper_params[:title],
+                  venue: paper_params[:venue],
+                  year: paper_params[:year])
+    paper.author_ids.concat(paper_params[:author_ids])
+  end
 end
