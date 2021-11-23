@@ -1,8 +1,12 @@
 class AuthorsController < ApplicationController
   before_action :set_author_params, only: [:create]
+  before_action :set_author, only: [:show]
   attr_accessor :author_params
 
   def index
+  end
+
+  def show
   end
 
   def new
@@ -19,6 +23,10 @@ class AuthorsController < ApplicationController
 
   def set_author_params
     @author_params ||= params.require(:author).permit(:first_name, :last_name, :homepage)
+  end
+
+  def set_author
+    @author ||= Author.find_by(id: params[:id])
   end
 end
 
