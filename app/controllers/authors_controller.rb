@@ -1,6 +1,6 @@
 class AuthorsController < ApplicationController
   before_action :set_author_params, only: [:create, :update]
-  before_action :set_author, only: [:show, :edit, :update]
+  before_action :set_author, only: [:show, :edit, :update, :destroy]
   attr_accessor :author_params
 
   def index
@@ -32,6 +32,11 @@ class AuthorsController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    @author.destroy
+    redirect_to authors_path
   end
 
   private
