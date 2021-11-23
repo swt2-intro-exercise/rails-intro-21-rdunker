@@ -16,5 +16,6 @@ describe "Index author page", type: :feature do
     expect(page).to have_text('Name')
     expect(page).to have_text('Homepage')
     expect(page).to have_link 'Show', href: author_path(@author)
+    expect(page).to have_link 'New', href: new_author_path
   end
 end
