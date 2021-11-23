@@ -18,4 +18,9 @@ describe "Index author page", type: :feature do
     expect(page).to have_link 'Show', href: author_path(@author)
     expect(page).to have_link 'New', href: new_author_path
   end
+
+  it "should have links to the edit author page" do
+    visit authors_path
+    expect(page).to have_link 'Edit', href: edit_author_path(@author)
+  end
 end
