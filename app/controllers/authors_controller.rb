@@ -1,6 +1,6 @@
 class AuthorsController < ApplicationController
   before_action :set_author_params, only: [:create]
-  before_action :set_author, only: [:show]
+  before_action :set_author, only: [:show, :update]
   attr_accessor :author_params
 
   def index
@@ -20,6 +20,9 @@ class AuthorsController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def edit
   end
 
   private
