@@ -14,10 +14,12 @@ class AuthorsController < ApplicationController
   end
 
   def create
-    Author.create(first_name: author_params[:first_name],
-                  last_name: author_params[:last_name],
-                  homepage: author_params[:homepage])
-    redirect_to root_path
+    @author = Author.new(author_params)
+    if @author.save
+      redirect_to root_path
+    else
+      render 'new'
+    end
   end
 
   private

@@ -22,4 +22,12 @@ describe "New author page", type: :feature do
     find('input[type="submit"]').click
     expect(Author.where(first_name: 'Albert', last_name: 'Turing', homepage: 'http://wikipedia.org/Alan_Turing').count).to eq 1
   end
+
+  it "should display an error on an invalid input" do
+    visit new_author_path
+    page.fill_in 'author[first_name]', with: 'Albert'
+    page.fill_in 'author[homepage]', with: 'http://wikipedia.org/Alan_Turing'
+    find('input[type="submit"]').click
+    expect(page).to have_text('error')
+  end
 end
