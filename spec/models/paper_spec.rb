@@ -28,4 +28,8 @@ RSpec.describe Paper, type: :model do
       expect(paper).not_to be_valid
     end
   end
+
+  describe 'associations' do
+    it { should have_and_belong_to_many(:authors) }
+  end
 end
