@@ -53,7 +53,7 @@ class PapersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def paper_params
-      params.require(:paper).permit(:title, :venue, :year, :author_ids)
+      params.require(:paper).permit(:title, :venue, :year, :author_ids => [])
     end
 
   def update_paper(paper_params, paper)
@@ -63,7 +63,7 @@ class PapersController < ApplicationController
     if paper_params[:author_ids].present?
       paper_params[:author_ids].each do |author_id|
         author = Author.find_by(id: author_id)
-        paper.authors << author
+        paper.authors << author if author.present?
       end
     end
     paper.save
