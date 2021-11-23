@@ -27,6 +27,8 @@ group :development, :test do
   gem 'capybara', '>= 2.15'
   # State of the art fixtures
   gem 'factory_bot_rails', '~> 6.1' # https://github.com/thoughtbot/factory_bot_rails
+
+  gem 'shoulda-matchers', '~> 4.0'
 end
 
 group :development do
@@ -37,3 +39,5 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+
