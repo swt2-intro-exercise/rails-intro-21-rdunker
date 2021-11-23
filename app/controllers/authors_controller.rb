@@ -4,6 +4,7 @@ class AuthorsController < ApplicationController
   attr_accessor :author_params
 
   def index
+    @authors = Author.all
   end
 
   def show
