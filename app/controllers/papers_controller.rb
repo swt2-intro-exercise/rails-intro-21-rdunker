@@ -63,7 +63,8 @@ class PapersController < ApplicationController
     if paper_params[:author_ids].present?
       paper_params[:author_ids].each do |author_id|
         author = Author.find_by(id: author_id)
-        paper.authors << author if author.present?
+        already_present = paper.authors.find_by(id: author_id).present?
+        paper.authors << author unless author.nil? || already_present
       end
     end
     paper.save
