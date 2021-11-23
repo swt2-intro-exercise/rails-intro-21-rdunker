@@ -1,5 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe Paper, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'columns' do
+    it { is_expected.to have_db_column(:title).of_type :string}
+    it { is_expected.to have_db_column(:venue).of_type :string}
+    it { is_expected.to have_db_column(:year).of_type :integer}
+  end
+
+  describe 'validations' do
+    it 'should have a year' do
+      paper = Paper.new(title: 'Electric vehicle Charging', venue: 'venue', year: nil)
+      expect(paper).not_to be_valid
+    end
+  end
 end
